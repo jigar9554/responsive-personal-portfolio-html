@@ -114,6 +114,13 @@ window.addEventListener('load', () => {
 function scrollToSection(id) {
   const element = document.getElementById(id);
   if (!element) return;
+
+  // Close mobile menu if open
+  const menu = document.getElementById('mobile-menu');
+  if (menu && !menu.classList.contains('hidden')) {
+    toggleMobileMenu();
+  }
+
   const headerOffset = 150;
   const elementPosition = element.getBoundingClientRect().top;
   const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
