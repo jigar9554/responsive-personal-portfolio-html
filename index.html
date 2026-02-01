@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Jigar Patel - Personal Portfolio</title>
     <!-- Tailwind CSS for modern styling -->
     <script src="assets/js/tailwindcss.js"></script>
@@ -21,10 +21,10 @@
 <body class="overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-4 md:px-6 py-4 flex justify-start md:justify-center">
+    <nav class="fixed w-full z-50 px-3 sm:px-4 md:px-6 py-3 md:py-4 flex justify-center safe-area-top">
         <div
-            class="nav-container nav-shadow rounded-full px-6 md:px-8 py-4 flex items-center border border-white/10 bg-slate-900/80 backdrop-blur-xl">
-            <div class="hidden md:flex items-center space-x-10">
+            class="nav-container rounded-full px-4 sm:px-6 md:px-8 py-3 md:py-4 flex items-center justify-start md:justify-center w-full max-w-4xl md:border md:border-white/10 md:bg-slate-900/80 md:backdrop-blur-xl">
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-10">
                 <a onclick="scrollToSection('about')"
                     class="nav-link text-xs font-semibold uppercase tracking-wider">About</a>
                 <a onclick="scrollToSection('skills')"
@@ -38,28 +38,28 @@
                 <a onclick="scrollToSection('contact')"
                     class="nav-link text-xs font-semibold uppercase tracking-wider">Contact</a>
             </div>
-            <button class="md:hidden" onclick="toggleMobileMenu()">
-                <i data-lucide="menu" class="w-5 h-5"></i>
+            <button class="md:hidden min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center bg-slate-800/50 hover:bg-slate-700/50 border border-white/10 transition-colors" onclick="toggleMobileMenu()" aria-label="Open menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-slate-900 z-[60] flex flex-col items-center justify-center space-y-8 hidden">
-        <button class="absolute top-6 right-6" onclick="toggleMobileMenu()">
+        class="fixed inset-0 bg-slate-900 z-[60] flex flex-col items-center justify-center space-y-6 sm:space-y-8 pt-16 pb-8 px-4 safe-area-inset hidden">
+        <button class="absolute top-4 right-4 sm:top-6 sm:right-6 min-w-[44px] min-h-[44px] flex items-center justify-center" onclick="toggleMobileMenu()" aria-label="Close menu">
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
-        <a onclick="scrollToSection('about')" class="text-2xl font-bold cursor-pointer">About</a>
-        <a onclick="scrollToSection('skills')" class="text-2xl font-bold cursor-pointer">Skills</a>
-        <a onclick="scrollToSection('portfolio')" class="text-2xl font-bold cursor-pointer">Portfolio</a>
-        <a onclick="scrollToSection('experience')" class="text-2xl font-bold cursor-pointer">Experience</a>
-        <a onclick="scrollToSection('education')" class="text-2xl font-bold cursor-pointer">Education</a>
-        <a onclick="scrollToSection('contact')" class="text-2xl font-bold cursor-pointer">Contact</a>
+        <a onclick="scrollToSection('about')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">About</a>
+        <a onclick="scrollToSection('skills')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">Skills</a>
+        <a onclick="scrollToSection('portfolio')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">Portfolio</a>
+        <a onclick="scrollToSection('experience')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">Experience</a>
+        <a onclick="scrollToSection('education')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">Education</a>
+        <a onclick="scrollToSection('contact')" class="text-xl sm:text-2xl font-bold cursor-pointer py-2 min-h-[44px] flex items-center">Contact</a>
     </div>
 
-    <main class="pt-24 lg:pt-32 px-4 md:px-6 max-w-6xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start">
+    <main class="pt-20 sm:pt-24 lg:pt-32 px-3 sm:px-4 md:px-6 max-w-6xl mx-auto min-w-0 safe-area-inset">
+        <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-20 items-start min-w-0">
 
             <!-- Mobile Profile Header -->
             <div class="lg:hidden mb-12 flex flex-col items-center text-center scroll-reveal">
@@ -74,7 +74,7 @@
                     <div class="absolute bottom-4 right-4 w-4 h-4 rounded-full bg-blue-500 border-2 border-slate-900">
                     </div>
                 </div>
-                <h1 class="text-4xl font-bold heading-font text-white mb-2">Jigar Patel</h1>
+                <h1 class="text-3xl sm:text-4xl font-bold heading-font text-white mb-2">Jigar Patel</h1>
                 <p class="text-blue-400 font-medium tracking-wide uppercase text-sm">Software Engineer – Lead</p>
             </div>
 
@@ -120,16 +120,16 @@
             </div>
 
             <!-- Right Scrolling Column (The Content) -->
-            <div class="space-y-32">
+            <div class="space-y-16 sm:space-y-24 lg:space-y-32 min-w-0">
 
                 <!-- About Me Content -->
-                <section id="about" class="scroll-reveal min-h-[50vh] flex flex-col justify-center">
-                    <div class="space-y-8">
-                        <h2 class="text-3xl md:text-5xl font-bold heading-font leading-tight">
+                <section id="about" class="scroll-reveal min-h-[40vh] sm:min-h-[50vh] flex flex-col justify-center">
+                    <div class="space-y-6 sm:space-y-8">
+                        <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold heading-font leading-tight">
                             Building Scalable <br />
                             <span class="gradient-text">Solutions.</span>
                         </h2>
-                        <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
+                        <div class="space-y-4 sm:space-y-6 text-slate-400 text-base sm:text-lg leading-relaxed">
                             <p>
                                 As Software Engineer with <b>9 years of experience</b> specializing in backend
                                 development, AI-powered automation, and full-stack applications. Skilled in <b>Node.js,
@@ -144,9 +144,9 @@
                                 infrastructure, and delivering scalable, secure solutions.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-4 pt-6">
+                        <div class="flex flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6">
                             <button
-                                class="bg-white text-slate-900 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-xl shadow-white/5">
+                                class="bg-white text-slate-900 hover:bg-blue-500 hover:text-white px-6 sm:px-8 py-3 sm:py-4 min-h-[44px] rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-xl shadow-white/5">
                                 <i data-lucide="download" class="w-5 h-5"></i> Download CV
                             </button>
                         </div>
@@ -156,13 +156,13 @@
                 <!-- Skills Section -->
                 <section id="skills" class="scroll-reveal">
                     <div class="mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 heading-font">Technical Expertise</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 heading-font">Technical Expertise</h2>
                         <div class="w-20 h-1 bg-blue-500 rounded-full"></div>
                     </div>
-                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                        <div class="glass-card p-6 md:p-8 rounded-3xl">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                    <div class="grid grid-cols-1 gap-4 sm:gap-6">
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl">
+                            <div class="flex items-center gap-3 sm:gap-4 mb-4">
+                                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="code-2" class="text-blue-400 w-6 h-6"></i>
                                 </div>
                                 <h3 class="text-xl font-bold heading-font">Languages & Frameworks</h3>
@@ -191,9 +191,9 @@
                                     CSS, Bootstrap</span>
                             </div>
                         </div>
-                        <div class="glass-card p-8 rounded-3xl">
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
+                                <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="bot" class="text-green-400 w-6 h-6"></i>
                                 </div>
                                 <h3 class="text-xl font-bold heading-font">AI & Automation</h3>
@@ -214,9 +214,9 @@
                                     class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">N8N</span>
                             </div>
                         </div>
-                        <div class="glass-card p-8 rounded-3xl">
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                                <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="database" class="text-purple-400 w-6 h-6"></i>
                                 </div>
                                 <h3 class="text-xl font-bold heading-font">Database Expertise</h3>
@@ -237,9 +237,9 @@
                                     Console</span>
                             </div>
                         </div>
-                        <div class="glass-card p-8 rounded-3xl">
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl">
                             <div class="flex items-center gap-4 mb-4">
-                                <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center">
+                                <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i data-lucide="cloud" class="text-red-400 w-6 h-6"></i>
                                 </div>
                                 <h3 class="text-xl font-bold heading-font">Cloud & Tools</h3>
@@ -263,15 +263,15 @@
                 <!-- Portfolio Slider Section -->
                 <section id="portfolio" class="scroll-reveal">
                     <div class="mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold heading-font mb-4">Featured Projects</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold heading-font mb-4">Featured Projects</h2>
                         <p class="text-slate-400">A collection of my recent work.</p>
-                        <div class="flex gap-4 mt-6">
+                        <div class="flex gap-3 sm:gap-4 mt-4 sm:mt-6">
                             <button id="prevBtn"
-                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
+                                class="w-11 h-11 sm:w-12 sm:h-12 min-w-[44px] min-h-[44px] rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
                                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
                             </button>
                             <button id="nextBtn"
-                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
+                                class="w-11 h-11 sm:w-12 sm:h-12 min-w-[44px] min-h-[44px] rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
                                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
                             </button>
                         </div>
@@ -282,13 +282,13 @@
                             <!-- Project 1: 24carrots -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/24C-logo.png" alt="24carrots"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">24carrots</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">24carrots</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             24 Carrots is a full-service catering and events company serving all of
                                             Southern California. We help create extraordinary weddings, social
@@ -306,13 +306,13 @@
                             <!-- Project 2: Labor Net App -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/Labor%20Net.webp" alt="Labor Net App"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">Labor Net App</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">Labor Net App</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             For years the moving industry has been looking for a consolidated and
                                             centralized source for casual labor and a universal background check which
@@ -330,13 +330,13 @@
                             <!-- Project 3: Byju's Elevate -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/Byjus.png" alt="Byju's Elevate"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">Byju's Elevate</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">Byju's Elevate</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             Byju's Elevate is EMS for byju's employees where they can manage their tasks
                                             and track all task hours and status. Management can generate reports for
@@ -353,13 +353,13 @@
                             <!-- Project 4: Coldco Logistic -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/coldco-logistic.png" alt="Coldco Logistic"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">Coldco Logistic</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">Coldco Logistic</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             Over the past 20 years, Coldco Logistics has provided logistics solutions to
                                             more than 500 local, regional, national, and international customers across
@@ -377,13 +377,13 @@
                             <!-- Project 5: Cupid Knot -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/cupid-knot.webp" alt="Cupid Knot"
                                             class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">Cupid Knot</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">Cupid Knot</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             Cupid Knot is India’s Fastest and free matrimony app helping individuals
                                             find their significant others. Founded in 2017 for Jain, Agarwal,
@@ -401,13 +401,13 @@
                             <!-- Project 6: STYLE4SURE -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/style4sure_logo.png" alt="STYLE4SURE"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">STYLE4SURE</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">STYLE4SURE</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             Style4sure is a technology company on a mission to digitize India with our
                                             e-commerce solution. We also manufacture and trade women's ethnic wear,
@@ -424,13 +424,13 @@
                             <!-- Project 7: Snowboxx -->
                             <div class="slider-slide">
                                 <div
-                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    class="glass-card slider-card rounded-2xl sm:rounded-3xl overflow-hidden group h-full flex flex-col">
                                     <div class="project-logo-area relative bg-slate-800/50">
                                         <img src="assets/img/snowboxx.png" alt="Snowboxx"
                                             class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
                                     </div>
-                                    <div class="p-6 md:p-8 flex flex-col flex-grow">
-                                        <h3 class="text-xl font-bold heading-font mb-4">Snowboxx</h3>
+                                    <div class="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">
+                                        <h3 class="text-lg sm:text-xl font-bold heading-font mb-3 sm:mb-4">Snowboxx</h3>
                                         <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
                                             Snowboxx is an incredible music festival at Europe's best ski resort. A
                                             unique winter festival experience combining skiing, music, and parties.
@@ -452,15 +452,15 @@
                         <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
                             <i data-lucide="briefcase" class="text-blue-500 w-6 h-6"></i>
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-bold heading-font">Experience</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold heading-font">Experience</h2>
                     </div>
-                    <div class="space-y-8 relative border-l-2 border-slate-800 ml-14 lg:ml-6 pl-8 md:pl-10">
+                    <div class="space-y-6 sm:space-y-8 relative border-l-2 border-slate-800 ml-12 sm:ml-14 lg:ml-6 pl-6 sm:pl-8 md:pl-10">
                         <div class="relative">
                             <div
-                                class="absolute -left-[45px] md:-left-[51px] top-1 w-5 h-5 rounded-full bg-blue-600 ring-4 ring-slate-900">
+                                class="absolute -left-[37px] sm:-left-[45px] md:-left-[51px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-600 ring-4 ring-slate-900">
                             </div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h4 class="text-xl font-bold heading-font">Software Engineer – Lead</h4>
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
+                                <h4 class="text-lg sm:text-xl font-bold heading-font">Software Engineer – Lead</h4>
                                 <span class="text-blue-400 font-bold text-xs">Nov 2021 — PRESENT</span>
                                 <p class="text-slate-400 mt-2 text-sm">Crest Info Systems Pvt. Ltd. | India</p>
                                 <button onclick="openExperienceModal('lead')"
@@ -472,10 +472,10 @@
                         </div>
                         <div class="relative">
                             <div
-                                class="absolute -left-[45px] md:-left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                                class="absolute -left-[37px] sm:-left-[45px] md:-left-[51px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
                             </div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h4 class="text-xl font-bold heading-font">Senior Software Engineer</h4>
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
+                                <h4 class="text-lg sm:text-xl font-bold heading-font">Senior Software Engineer</h4>
                                 <span class="text-slate-400 font-bold text-xs">Dec 2020 — Nov 2021</span>
                                 <p class="text-slate-400 mt-2 text-sm">Kritikal Solutions Pvt. Ltd. | India</p>
                                 <button onclick="openExperienceModal('senior-kritikal')"
@@ -487,10 +487,10 @@
                         </div>
                         <div class="relative">
                             <div
-                                class="absolute -left-[45px] md:-left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                                class="absolute -left-[37px] sm:-left-[45px] md:-left-[51px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
                             </div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h4 class="text-xl font-bold heading-font">Senior Software Engineer</h4>
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
+                                <h4 class="text-lg sm:text-xl font-bold heading-font">Senior Software Engineer</h4>
                                 <span class="text-slate-400 font-bold text-xs">Dec 2017 — Dec 2020</span>
                                 <p class="text-slate-400 mt-2 text-sm">Sassy Infotech Pvt. Ltd. | India</p>
                                 <button onclick="openExperienceModal('senior-sassy')"
@@ -502,10 +502,10 @@
                         </div>
                         <div class="relative">
                             <div
-                                class="absolute -left-[45px] md:-left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                                class="absolute -left-[37px] sm:-left-[45px] md:-left-[51px] top-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
                             </div>
-                            <div class="glass-card p-6 rounded-3xl">
-                                <h4 class="text-xl font-bold heading-font">Junior Software Engineer (Training)</h4>
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
+                                <h4 class="text-lg sm:text-xl font-bold heading-font">Junior Software Engineer (Training)</h4>
                                 <span class="text-slate-400 font-bold text-xs">Dec 2016 — Nov 2017</span>
                                 <p class="text-slate-400 mt-2 text-sm">Wama Software | Ahmedabad</p>
                                 <button onclick="openExperienceModal('junior')"
@@ -524,15 +524,15 @@
                         <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
                             <i data-lucide="graduation-cap" class="text-purple-500 w-6 h-6"></i>
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-bold heading-font">Education</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold heading-font">Education</h2>
                     </div>
-                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
-                        <div class="glass-card p-6 md:p-8 rounded-3xl border-t-4 border-t-purple-500">
-                            <h4 class="text-xl font-bold heading-font">Master of Computer Applications (MCA)</h4>
+                    <div class="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-1">
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-t-4 border-t-purple-500">
+                            <h4 class="text-lg sm:text-xl font-bold heading-font">Master of Computer Applications (MCA)</h4>
                             <p class="text-slate-400 text-sm">Charotar University of Science & Technology | 2017</p>
                         </div>
-                        <div class="glass-card p-6 md:p-8 rounded-3xl border-t-4 border-t-purple-500">
-                            <h4 class="text-xl font-bold heading-font">Bachelor of Computer Applications (BCA)</h4>
+                        <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl border-t-4 border-t-purple-500">
+                            <h4 class="text-lg sm:text-xl font-bold heading-font">Bachelor of Computer Applications (BCA)</h4>
                             <p class="text-slate-400 text-sm">Veer Narmad South Gujarat University | 2015</p>
                         </div>
                     </div>
@@ -541,31 +541,31 @@
                 <!-- Contact Section -->
                 <section id="contact" class="scroll-reveal pb-20">
                     <div class="mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 heading-font">Get In Touch</h2>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 heading-font">Get In Touch</h2>
                         <p class="text-slate-400">Interested in working together?</p>
                     </div>
-                    <div class="glass-card p-6 md:p-8 rounded-3xl nav-shadow">
-                        <form id="contactForm" class="space-y-6">
+                    <div class="glass-card p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl nav-shadow">
+                        <form id="contactForm" class="space-y-4 sm:space-y-6">
                             <div class="space-y-2">
                                 <label class="text-sm font-medium text-slate-400">Full Name</label>
                                 <input type="text" id="name"
-                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-blue-500 transition min-h-[44px]"
                                     placeholder="John Doe">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-sm font-medium text-slate-400">Email</label>
                                 <input type="email" id="email"
-                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-blue-500 transition min-h-[44px]"
                                     placeholder="john@example.com">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-sm font-medium text-slate-400">Message</label>
-                                <textarea rows="3" id="message"
-                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                <textarea rows="4" id="message"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-blue-500 transition min-h-[100px] resize-y"
                                     placeholder="Tell me about your project..."></textarea>
                             </div>
                             <button type="button" onclick="handleSubmit()"
-                                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition">
+                                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 sm:py-4 min-h-[48px] rounded-2xl transition">
                                 Send Message
                             </button>
                             <div id="feedback" class="hidden text-center text-green-400 font-medium">Message sent
@@ -574,12 +574,12 @@
                     </div>
                 </section>
 
-                <footer class="py-12 border-t border-white/10 text-center text-slate-500 text-sm">
-                    <div class="flex justify-center space-x-6 mb-6">
-                        <a href="https://github.com/jigar9554" target="_blank" class="hover:text-white transition"><i
-                                data-lucide="github"></i></a>
+                <footer class="py-8 sm:py-12 border-t border-white/10 text-center text-slate-500 text-sm safe-area-bottom">
+                    <div class="flex justify-center space-x-6 mb-4 sm:mb-6">
+                        <a href="https://github.com/jigar9554" target="_blank" class="hover:text-white transition min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="GitHub"><i
+                                data-lucide="github" class="w-6 h-6"></i></a>
                         <a href="https://www.linkedin.com/in/jigar-patel1994" target="_blank"
-                            class="hover:text-white transition"><i data-lucide="linkedin"></i></a>
+                            class="hover:text-white transition min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                     </div>
                     <p>&copy; <span id="currentYear"></span> Jigar Patel.</p>
                 </footer>
@@ -588,18 +588,18 @@
     </main>
 
     <!-- Experience Modal -->
-    <div id="experienceModal" class="fixed inset-0 z-[100] hidden">
+    <div id="experienceModal" class="fixed inset-0 z-[100] hidden safe-area-inset">
         <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="closeExperienceModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
             <div
-                class="bg-slate-800 border border-white/10 rounded-3xl max-w-2xl w-full p-8 relative transform transition-all scale-100 shadow-2xl overflow-y-auto max-h-[80vh]">
+                class="bg-slate-800 border border-white/10 rounded-2xl sm:rounded-3xl max-w-2xl w-full p-5 sm:p-6 md:p-8 my-auto relative transform transition-all scale-100 shadow-2xl overflow-y-auto max-h-[85vh] sm:max-h-[80vh]">
                 <button onclick="closeExperienceModal()"
-                    class="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    class="absolute top-3 right-3 sm:top-4 sm:right-4 min-w-[44px] min-h-[44px] p-2 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors" aria-label="Close">
                     <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-white"></i>
                 </button>
 
-                <div class="mb-6">
-                    <h3 id="modalTitle" class="text-2xl font-bold heading-font text-white mb-2"></h3>
+                <div class="mb-4 sm:mb-6 pr-10">
+                    <h3 id="modalTitle" class="text-xl sm:text-2xl font-bold heading-font text-white mb-2"></h3>
                     <div class="flex flex-wrap gap-3 text-sm">
                         <span id="modalDate" class="text-blue-400 font-bold"></span>
                         <span class="text-slate-600">|</span>
