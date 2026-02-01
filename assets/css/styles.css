@@ -184,7 +184,7 @@ main .glass-card:not(.slider-card):hover {
 }
 
 /* Layout modifications for Sticky Left Column */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .sticky-column {
         position: sticky;
         top: 150px;

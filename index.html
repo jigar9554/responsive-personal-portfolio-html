@@ -58,11 +58,28 @@
         <a onclick="scrollToSection('contact')" class="text-2xl font-bold cursor-pointer">Contact</a>
     </div>
 
-    <main class="pt-24 md:pt-32 px-4 md:px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start">
+    <main class="pt-24 lg:pt-32 px-4 md:px-6 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start">
+
+            <!-- Mobile Profile Header -->
+            <div class="lg:hidden mb-12 flex flex-col items-center text-center scroll-reveal">
+                <div class="relative w-40 h-40 mb-6 group">
+                    <div
+                        class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 opacity-20 animate-pulse">
+                    </div>
+                    <div class="absolute inset-2 rounded-full border-2 border-white/20 shadow-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                            alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-4 right-4 w-4 h-4 rounded-full bg-blue-500 border-2 border-slate-900">
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold heading-font text-white mb-2">Jigar Patel</h1>
+                <p class="text-blue-400 font-medium tracking-wide uppercase text-sm">Software Engineer – Lead</p>
+            </div>
 
             <!-- Left Sticky Column (The Image) -->
-            <div class="sticky-column">
+            <div class="sticky-column hidden lg:block">
                 <div class="profile-container mx-auto md:mx-0 max-w-sm md:max-w-none">
                     <div class="profile-frame-bg"></div>
                     <div class="profile-glass-accent accent-top">
@@ -437,7 +454,7 @@
                         </div>
                         <h2 class="text-3xl md:text-4xl font-bold heading-font">Experience</h2>
                     </div>
-                    <div class="space-y-8 relative border-l-2 border-slate-800 ml-4 md:ml-6 pl-8 md:pl-10">
+                    <div class="space-y-8 relative border-l-2 border-slate-800 ml-14 lg:ml-6 pl-8 md:pl-10">
                         <div class="relative">
                             <div
                                 class="absolute -left-[45px] md:-left-[51px] top-1 w-5 h-5 rounded-full bg-blue-600 ring-4 ring-slate-900">
