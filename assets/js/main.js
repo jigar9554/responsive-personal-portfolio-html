@@ -1,187 +1,264 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
-const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById("nav-toggle"),
-      navClose = document.getElementById("nav-close")
+lucide.createIcons();
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.add('show-menu');
-  })
+// Slider logic
+const track = document.getElementById('sliderTrack');
+const container = document.getElementById('sliderContainer');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentIndex = 0;
+let startX, currentTranslate, prevTranslate, isDragging = false;
+
+function updateSlider() {
+  const slideWidth = track.querySelector('.slider-slide').clientWidth;
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+  const maxIndex = track.children.length - 1;
+  prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+  nextBtn.style.opacity = currentIndex >= maxIndex ? '0.3' : '1';
 }
 
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if (navClose) {
-  navClose.addEventListener('click', () => {
-    navMenu.classList.remove('show-menu');
-  })
-}
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-/*==================== ACCORDION SKILLS ====================*/
-const skillsContent = document.getElementsByClassName('skills__content'),
-      skillsHeader = document.querySelectorAll('.skills__header')
-
-function toggleSkills() {
-  let itemClass = this.parentNode.className;
-
-  for(i = 0; i < skillsContent.length; i++) {
-    skillsContent[i].className = 'skills__content skills__close';
-  }
-
-  if (itemClass === 'skills__content skills__close') {
-    this.parentNode.className = 'skills__content skills__open';
-  }
-}
-skillsHeader.forEach((el) => {
-  el.addEventListener('click', toggleSkills);
-})
-
-/*==================== QUALIFICATION TABS ====================*/
-const tabs = document.querySelectorAll('[data-target]'),
-      tabContents = document.querySelectorAll('[data-content]')
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.target);
-    tabContents.forEach(tabContent => {
-      tabContent.classList.remove('qualification__active');
-    });
-    target.classList.add('qualification__active');
-    tabs.forEach(tab => {
-      tab.classList.remove('qualification__active');
-    })
-    tab.classList.add('qualification__active');
-  });
-});
-
-/*==================== SERVICES MODAL ====================*/
-const modalViews = document.querySelectorAll('.services__modal'),
-      modalBtns = document.querySelectorAll('.services__button'),
-      modalCloses = document.querySelectorAll('.services__modal-close');
-
-let modal = function(modalClick) {
-  modalViews[modalClick].classList.add('active-modal')
-}
-
-modalBtns.forEach((modalBtn, i) => {
-  modalBtn.addEventListener('click', () => {
-    modal(i)
-  })
-});
-
-modalCloses.forEach((modalClose) => {
-  modalClose.addEventListener('click', () => {
-    modalViews.forEach((modalView) => {
-      modalView.classList.remove('active-modal')
-    })
-  })
-})
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiper = new Swiper(".portfolio__container", {
-  cssMode: true,
-  loop: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true
+nextBtn.addEventListener('click', () => {
+  const maxIndex = track.children.length - 1;
+  if (currentIndex < maxIndex) {
+    currentIndex++;
+    updateSlider();
   }
 });
 
-/*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper(".testimonial__container", {
-  loop: true,
-  grabCursor:true,
-  spaceBetween: 48,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: true
-  },
-  breakpoints: {
-    568: {
-      slidesPerView: 2,
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateSlider();
+  }
+});
+
+container.addEventListener('mousedown', dragStart);
+container.addEventListener('touchstart', dragStart);
+container.addEventListener('mouseup', dragEnd);
+container.addEventListener('touchend', dragEnd);
+container.addEventListener('mousemove', dragMove);
+container.addEventListener('touchmove', dragMove);
+
+function dragStart(e) {
+  isDragging = true;
+  startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  track.style.transition = 'none';
+}
+
+function dragMove(e) {
+  if (!isDragging) return;
+  const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  const diff = currentX - startX;
+  const slideWidth = track.querySelector('.slider-slide').clientWidth;
+  const translate = (-currentIndex * slideWidth) + diff;
+  track.style.transform = `translateX(${translate}px)`;
+}
+
+function dragEnd(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  track.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+
+  const slideWidth = track.querySelector('.slider-slide').clientWidth;
+  const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (Math.abs(diff) > slideWidth / 4) {
+    if (diff < 0) {
+      const maxIndex = track.children.length - 1;
+      if (currentIndex < maxIndex) currentIndex++;
+    } else {
+      if (currentIndex > 0) currentIndex--;
     }
   }
+  updateSlider();
+}
+
+window.addEventListener('resize', updateSlider);
+updateSlider();
+
+// Intersection Observer for Modern Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+      entry.target.style.opacity = '1';
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+  observer.observe(el);
 });
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
+// Prevent browser from restoring scroll position on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
+window.addEventListener('load', () => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+  // Set current year in footer
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+});
 
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (!element) return;
+  const headerOffset = 150;
+  const elementPosition = element.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+}
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
-        }
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+  document.body.classList.toggle('overflow-hidden');
+}
+
+
+function handleSubmit() {
+  const btn = document.querySelector('#contactForm button');
+  const feedback = document.getElementById('feedback');
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  if (!name || !email || !message) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  // Google Apps Script URL
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwvp0qW9Kmy5L0EHg-QLpN5BfMUKCYgCi3_zXJrogYgRKGNv-jAYhCnLGYCOw0uxJDfpw/exec';
+
+  // Prepare data for Google Script
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('message', message);
+
+  // Send request in background 
+  // 'no-cors' is CRITICAL for Google App Scripts to work without error
+  fetch(scriptURL, {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors'
+  })
+    .then(response => {
+      btn.classList.add('hidden');
+      feedback.classList.remove('hidden');
+      feedback.textContent = 'Message sent successfully!';
+      feedback.classList.remove('text-red-500');
+      feedback.classList.add('text-green-400');
     })
-}
-window.addEventListener('scroll', scrollActive)
-
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
-function scrollHeader(){
-  const nav = document.getElementById('header')
-  // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
-  if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
-}
-window.addEventListener('scroll', scrollHeader)
-
-
-/*==================== SHOW SCROLL UP ====================*/ 
-function scrollUp(){
-  const scrollUp = document.getElementById('scroll-up');
-  // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-  if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
-
-/*==================== DARK LIGHT THEME ====================*/ 
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'uil-sun'
-
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
-
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
-
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+    .catch(error => {
+      btn.innerHTML = 'Send Message';
+      btn.disabled = false;
+      feedback.classList.remove('hidden');
+      feedback.textContent = 'Error! Please check console.';
+      feedback.classList.remove('text-green-400');
+      feedback.classList.add('text-red-500');
+      console.error('Error!', error.message);
+    });
 }
 
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
-})
+
+// Experience Modal Logic
+const experienceData = {
+  'lead': {
+    title: 'Software Engineer – Lead',
+    date: 'Nov 2021 — PRESENT',
+    company: 'Crest Info Systems Pvt. Ltd. | India',
+    points: [
+      'AI Implementation: Designed and deployed an AI-powered chat-bot to assist customers and the administration team, significantly improving support efficiency.',
+      'Development Optimization: Integrated AI tools into the development workflow to accelerate project timelines and coding efficiency.',
+      'Direct the implementation of websites based on specific client requirements and project specifications.',
+      'Manage client servers and oversee projects utilizing various database structures to ensure operational stability.',
+      'Developed optimized database schemas and migration structures across multiple platforms.',
+      'Implement robust security measures for databases, specifically securing MySQL environments.',
+      'Generate comprehensive analytics and reports using Google Studio.'
+    ]
+  },
+  'senior-kritikal': {
+    title: 'Senior Software Engineer',
+    date: 'Dec 2020 — Nov 2021',
+    company: 'Kritikal Solutions Pvt. Ltd. | India',
+    points: [
+      'Developed backend modules for Byju’s, India’s largest EdTech product.',
+      'Built and integrated REST APIs while ensuring security and high performance.',
+      'Automated data processing and reporting workflows for improved business insights.',
+      'Improved backend architecture to support high-volume traffic and large datasets.'
+    ]
+  },
+  'senior-sassy': {
+    title: 'Senior Software Engineer',
+    date: 'Dec 2017 — Dec 2020',
+    company: 'Sassy Infotech Pvt. Ltd. | India',
+    points: [
+      'Configured remote clients and local Ubuntu-based servers, tailoring setups to meet specific project requirements',
+      'Managed server infrastructure on Digital Ocean, including the configuration of various droplets.',
+      'Developed REST APIs for web and mobile applications using Node JS (with TypeScript) and Laravel.',
+      'Implemented real-time chat modules using Socket.io and Firebase Console.',
+      'Built authentication flows and role-based access using Firebase.',
+      'Collaborated closely with Database Administrators to manage MySQL, MongoDB, and Firebase databases.'
+    ]
+  },
+  'junior': {
+    title: 'Junior Software Engineer (Training)',
+    date: 'Dec 2016 — Nov 2017',
+    company: 'Wama Software | Ahmedabad',
+    points: [
+      'Created REST APIs for web and mobile platforms utilizing Node JS and Laravel.',
+      'Implemented chat functionality using Socket.io and worked with MongoDB, MySQL, and Firebase.'
+    ]
+  }
+};
+
+function openExperienceModal(id) {
+  const data = experienceData[id];
+  if (!data) return;
+
+  document.getElementById('modalTitle').textContent = data.title;
+  document.getElementById('modalDate').textContent = data.date;
+  document.getElementById('modalCompany').textContent = data.company;
+
+  const contentList = document.getElementById('modalContent');
+  contentList.innerHTML = data.points.map(point =>
+    `<li class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"></i>
+            <span>${point}</span>
+        </li>`
+  ).join('');
+
+  // Re-initialize icons for the new content
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  const modal = document.getElementById('experienceModal');
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeExperienceModal() {
+  const modal = document.getElementById('experienceModal');
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+// Close on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeExperienceModal();
+});
