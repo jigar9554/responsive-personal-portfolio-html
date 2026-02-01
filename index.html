@@ -1,718 +1,605 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-        <!--==================== UNICONS ====================-->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-        
-        <!--==================== SWIPER CSS ====================-->
-        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-        
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="assets/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigar Patel - Personal Portfolio</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="assets/js/tailwindcss.js"></script>
+    <!-- Lucide Icons -->
+    <script src="assets/js/lucide.min.js"></script>
+    <!-- Animate.css for entrance animations -->
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <!-- Google Fonts -->
+    <link href="assets/css/fonts.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
 
-        <title>Responsive Portfolio Website</title>
-    </head>
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#" class="nav__logo">Jigar</a>
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">
-                                <i class="uil uil-estate nav__icon"></i> Home
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">
-                                <i class="uil uil-user nav__icon"></i> About
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#skills" class="nav__link">
-                                <i class="uil uil-file-alt nav__icon"></i> Skills
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#services" class="nav__link">
-                                <i class="uil uil-briefcase-alt nav__icon"></i> Services
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#portfolio" class="nav__link">
-                                <i class="uil uil-scenery nav__icon"></i> Portfolio
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link">
-                                <i class="uil uil-message nav__icon"></i> Contact me
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="uil uil-times nav__close" id="nav-close"></i>
-                </div>
-                <div class="nav__btns">
-                    <i class="uil uil-moon change-theme" id="theme-button"></i>
 
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class="uil uil-apps"></i>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-center">
+        <div
+            class="nav-container nav-shadow rounded-full px-8 py-4 flex items-center border border-white/10 bg-slate-900/80 backdrop-blur-xl">
+            <div class="hidden md:flex items-center space-x-10">
+                <a onclick="scrollToSection('about')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">About</a>
+                <a onclick="scrollToSection('skills')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">Skills</a>
+                <a onclick="scrollToSection('portfolio')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">Portfolio</a>
+                <a onclick="scrollToSection('experience')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">Experience</a>
+                <a onclick="scrollToSection('education')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">Education</a>
+                <a onclick="scrollToSection('contact')"
+                    class="nav-link text-xs font-semibold uppercase tracking-wider">Contact</a>
+            </div>
+            <button class="md:hidden" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-slate-900 z-[60] flex flex-col items-center justify-center space-y-8 hidden">
+        <button class="absolute top-6 right-6" onclick="toggleMobileMenu()">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a onclick="scrollToSection('about')" class="text-2xl font-bold cursor-pointer">About</a>
+        <a onclick="scrollToSection('skills')" class="text-2xl font-bold cursor-pointer">Skills</a>
+        <a onclick="scrollToSection('portfolio')" class="text-2xl font-bold cursor-pointer">Portfolio</a>
+        <a onclick="scrollToSection('experience')" class="text-2xl font-bold cursor-pointer">Experience</a>
+        <a onclick="scrollToSection('education')" class="text-2xl font-bold cursor-pointer">Education</a>
+        <a onclick="scrollToSection('contact')" class="text-2xl font-bold cursor-pointer">Contact</a>
+    </div>
+
+    <main class="pt-32 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+            <!-- Left Sticky Column (The Image) -->
+            <div class="sticky-column">
+                <div class="profile-container mx-auto md:mx-0">
+                    <div class="profile-frame-bg"></div>
+                    <div class="profile-glass-accent accent-top">
+                        <i data-lucide="code" class="text-blue-400 w-8 h-8"></i>
                     </div>
-                </div>
-            </nav>
-        </header>
-
-        <!--==================== MAIN ====================-->
-        <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home section" id="home">
-                <div class="home__container container grid">
-                    <div class="home__content grid">
-                        <div class="home__social">
-                            <a href="#" class="home__social-icon">
-                                <i class="uil uil-linkedin-alt"></i>
-                            </a>
-                            <a href="#" class="home__social-icon">
-                                <i class="uil uil-github-alt"></i>
-                            </a>
+                    <div class="profile-glass-accent accent-bottom">
+                        <i data-lucide="sparkles" class="text-purple-400 w-8 h-8"></i>
+                    </div>
+                    <div class="relative group z-10">
+                        <div
+                            class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-800 ring-4 ring-white/5">
+                            <div class="aspect-[3/4] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                                    alt="Profile"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700 ease-in-out scale-110 group-hover:scale-100">
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 profile-overlay p-8 pt-24 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                <h1 class="text-4xl font-bold heading-font tracking-tight text-white mb-1">
+                                    Jigar Patel
+                                </h1>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex -space-x-2 mr-2">
+                                        <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                                    </div>
+                                    <p class="text-blue-400 font-medium tracking-wide uppercase text-[10px] md:text-xs">
+                                        Software Engineer – Lead
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="home__img">
-                            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <mask id="mask0" mask-type="alpha">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                </mask>
-                                <g mask="url(#mask0)">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-
-                                    <image class="home__blob-img" x="12" y="18" href="assets/img/perfil.png"/>
-                                </g>
-                            </svg>                            
-                        </div>
-
-                        <div class="home__data">
-                            <h1 class="home__title">Hi, I am Jigar</h1>
-                            <h3 class="home__subtitle">Sr. Web Developer</h3>
-                            <p class="home__description">This is for test</p>
-                            <a href="#contact" class="button button--flex">
-                                Contact Me <i class="uil uil-message button__icon"></i>
-                            </a>
+                        <div
+                            class="absolute -right-4 bottom-1/4 bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold rotate-90 origin-right shadow-lg">
+                            EST. 2016
                         </div>
                     </div>
-
-                    <div class="home__scroll">
-                        <a href="#about" class="home__scroll-button button--flex">
-                            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                            <span class="home__scroll-name">Scroll Down</span>
-                            <i class="uil uil-arrow-down home_scroll-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-                <h2 class="section__title">About Me</h2>
-                <span class="section__subtitle">My introduction</span>
-
-                <div class="about__container container grid">
-                    <img src="assets/img/about.jpg" alt="" class="about__img">
-
-                    <div class="about__data">
-                        <p class="about__description">
-                            This is for test
-                        </p>
-
-                        <div class="about__info">
-                            <div>
-                                <span class="about__info-title">08+</span>
-                                <span class="about__info-name">Year<br> experience</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">10+</span>
-                                <span class="about__info-name">Completed<br> project</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title">04</span>
-                                <span class="about__info-name">Companies<br> work</span>
-                            </div>
-                        </div>
-
-                        <div class="about__buttons">
-                            <a href="#" class="button button--flex">
-                                Download CV<i class="uil uil-import button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== SKILLS ====================-->
-            <section class="skills section" id="skills">
-                <h2 class="section__title">Skills</h2>
-                <span class="section__subtitle">My technical level</span>
-
-                <div class="skills__container container grid">
-                    <div>
-                        <div class="skills__content skills__open">
-                            <div class="skills__header">
-                                <i class="uil uil-brackets-curly skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Backend Developer</h1>
-                                    <span class="skills__subtitle">More then 4 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">Laravel</h3>
-                                        <span class="skill__number">90%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__laravel"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">Node Js</h3>
-                                        <span class="skill__number">70%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__node"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">Express Js</h3>
-                                        <span class="skill__number">75%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__express"></span>
-                                    </div>
-                                </div>
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">PHP</h3>
-                                        <span class="skill__number">95%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__php"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-server-network skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Frontend Developer</h1>
-                                    <span class="skills__subtitle">More then 1 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">Vue JS</h3>
-                                        <span class="skill__number">50%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__vue"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="skills__content skills__close">
-                            <div class="skills__header">
-                                <i class="uil uil-database skills__icon"></i>
-
-                                <div>
-                                    <h1 class="skills__title">Database</h1>
-                                    <span class="skills__subtitle">More then 4 years</span>
-                                </div>
-
-                                <i class="uil uil-angle-down skills__arrow"></i>
-                            </div>
-
-                            <div class="skills__list grid">
-                                <div class="skills__data">
-                                    <div class="skills__title">
-                                        <h3 class="skills__name">MySql</h3>
-                                        <span class="skill__number">90%</span>
-                                    </div>
-                                    <div class="skills__bar">
-                                        <span class="skills__percentage skills__mysql"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification section">
-                <h2 class="section__title">Qualification</h2>    
-                <span class="section__subtitle">My personal journey</span>
-
-                <div class="qualification__container container">
-                    <div class="qualification__tabs">
-                        <div class="qualification__button button--flex qualification__active" data-target="#education">
-                            <i class="uil uil-graduation-cap qualification__icon"></i>
-                            Education
-                        </div>
-                        <div class="qualification__button button--flex" data-target="#work">
-                            <i class="uil uil-briefcase-alt qualification__icon"></i>
-                            Work
-                        </div>
-                    </div>
-
-                    <div class="qualification__sections">
-                        <div class="qualification__content qualification__active" data-content id="education">
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">BCA</h3>
-                                    <span class="qualification__subtitle">
-                                        VNSGU University
-                                    </span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2012-2015
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <!-- <span class="qualification__line"></span> -->
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">MCA</h3>
-                                    <span class="qualification__subtitle">
-                                        Charotar University
-                                    </span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2015-2017
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="qualification__content" data-content id="work">
-                            <div class="qualification__data">
-                                <div>
-                                    <h3 class="qualification__title">First Job</h3>
-                                    <span class="qualification__subtitle">
-                                        First Company
-                                    </span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2017-2017
-                                    </div>
-                                </div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <span class="qualification__line"></span>
-                                </div>
-                            </div>
-                            <div class="qualification__data">
-                                <div></div>
-                                <div>
-                                    <span class="qualification__rounder"></span>
-                                    <!-- <span class="qualification__line"></span> -->
-                                </div>
-                                <div>
-                                    <h3 class="qualification__title">Second Jon</h3>
-                                    <span class="qualification__subtitle">
-                                        Second Company
-                                    </span>
-                                    <div class="qualification__calender">
-                                        <i class="uil uil-calendar-alt"></i>
-                                        2017-2018
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== SERVICES ====================-->
-            <section class="services section" id="services">
-                <h2 class="section__title">Services</h2>
-                <span class="section__subtitle">What i offer</span>
-
-                <div class="services__container container grid">
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-circle services__icon"></i>
-                            <h3 class="services__title">Backend Developer</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View more <i class="uil uil-arrow-right button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">
-                                    Backend Developer
-                                </h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Work with PHP</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Work with Laravel upto V9</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="services__content">
-                        <div>
-                            <i class="uil uil-circle services__icon"></i>
-                            <h3 class="services__title">Frontend Developer</h3>
-                        </div>
-
-                        <span class="button button--flex button--small button--link services__button">
-                            View more <i class="uil uil-arrow-right button__icon"></i>
-                        </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">
-                                    Frontend Developer
-                                </h4>
-                                <i class="uil uil-times services__modal-close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Work with Jquery, Javascript</p>
-                                    </li>
-                                    <li class="services__modal-service">
-                                        <i class="uil uil-check-circle services__modal-icon"></i>
-                                        <p>Work with Vue 3</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== PORTFOLIO ====================-->
-            <section class="portfolio section" id="portfolio">
-                <h2 class="section__title">Portfolio</h2>
-                <span class="section__subtitle">Most recent work</span>
-
-                <div class="portfolio__container container swiper">
-                    <div class="swiper-wrapper">
-                        <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/portfolio1.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfoli__data">
-                                <h3 class="portfolio__title">Modern Website</h3>
-                                <p class="portfolio__description">
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                                </p>
-                                <a href="#" class="button button--flex button--small portfolio__button">
-                                    Demo
-                                    <i class="uil uil-arrow-right button__icon"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/portfolio2.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfoli__data">
-                                <h3 class="portfolio__title">Demo Website 1</h3>
-                                <p class="portfolio__description">
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                                </p>
-                                <a href="#" class="button button--flex button--small portfolio__button">
-                                    Demo
-                                    <i class="uil uil-arrow-right button__icon"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="portfolio__content grid swiper-slide">
-                            <img src="assets/img/portfolio1.jpg" alt="" class="portfolio__img">
-
-                            <div class="portfoli__data">
-                                <h3 class="portfolio__title">Demo Website 2</h3>
-                                <p class="portfolio__description">
-                                    is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                                </p>
-                                <a href="#" class="button button--flex button--small portfolio__button">
-                                    Demo
-                                    <i class="uil uil-arrow-right button__icon"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-button-next">
-                        <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-                    </div>
-                    <div class="swiper-button-prev">
-                        <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </section>
-
-            <!--==================== PROJECT IN MIND ====================-->
-            <section class="project section">
-                <div class="project__bg">
-                    <div class="project__container container grid">
-                        <div class="project__data">
-                            <h2 class="project__title">
-                                You have in project
-                            </h2>
-                            <p class="project__description">
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                            </p>
-                            <a href="#" class="button button--flex button--white" >
-                                Contact Me
-                                <i class="uil uil-message project__icon button__icon"></i>
-                            </a>
-                        </div>
-
-                        <img src="assets/img/project.png" alt="" class="project__img" >
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== TESTIMONIAL ====================-->
-            <section class="testimonial section">
-                <h2 class="section__title">Testimonial</h2>
-                <span class="section__subtitle">My client saying</span>
-
-                <div class="testimonial__container container swiper">
-                    <div class="swiper-wrapper">
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/testimonial1.jpg" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">Test User</h3>
-                                        <span class="testimonial__client">
-                                            Client
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                </div>
-                            </div>
-                            <p class="testimonial__description">
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                            </p>
-                        </div>
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/testimonial2.jpg" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">Test User</h3>
-                                        <span class="testimonial__client">
-                                            Client
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                </div>
-                            </div>
-                            <p class="testimonial__description">
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                            </p>
-                        </div>
-                        <div class="testimonial__content swiper-slide">
-                            <div class="testimonial__data">
-                                <div class="testimonial__header">
-                                    <img src="assets/img/testimonial3.jpg" alt="" class="testimonial__img">
-
-                                    <div>
-                                        <h3 class="testimonial__name">Test User</h3>
-                                        <span class="testimonial__client">
-                                            Client
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                    <i class="uil uil-star testimonial__icon-star"></i>
-                                </div>
-                            </div>
-                            <p class="testimonial__description">
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination swiper-pagination-testimonial"></div>
-                </div>
-            </section>
-
-            <!--==================== CONTACT ME ====================-->
-            <section class="contact section" id="contact">
-                <h2 class="section__title">Contact Me</h2>
-                <span class="section__subtitle">Get in touch</span>
-
-                <div class="contact__container container grid">
-                    <div>
-                        <div class="contact__information">
-                            <i class="uil uil-phone contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Call Me</h3>
-                                <span class="contact__subtitle">123-123-123</span>
-                            </div>
-                        </div>
-                        <div class="contact__information">
-                            <i class="uil uil-envelope contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Email</h3>
-                                <span class="contact__subtitle">jigarpatel9554@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="contact__information">
-                            <i class="uil uil-map-marker contact__icon"></i>
-
-                            <div>
-                                <h3 class="contact__title">Address</h3>
-                                <span class="contact__subtitle">India, Gujarat, Surat - 395009</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <form action="" class="contact__form grid">
-                        <div class="contact__inputs grid">
-                            <div class="contact__contact">
-                                <label for="name" class="contact__label">Name</label>
-                                <input type="text" class="contact__input" id="name">
-                            </div>
-                            <div class="contact__contact">
-                                <label for="email" class="contact__label">Email</label>
-                                <input type="email" class="contact__input" id="email">
-                            </div>
-                        </div>
-                        <div class="contact__contact">
-                            <label for="message" class="contact__label">Message</label>
-                            <textarea name="message" id="message" cols="0" rows="7" class="contact__input"></textarea>
-                        </div>
-
-                        <div>
-                            <a href="#" class="button button--flex">
-                                Send Message
-                                <i class="uil uil-message button__icon"></i>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!--==================== FOOTER ====================-->
-        <footer class="footer">
-            <div class="footer__bg">
-                <div class="footer__container container grid">
-                    <div>
-                        <h1 class="footer__title">Jigar</h1>
-                        <span class="footer__subtitle">
-                            Fullstack Developer
-                        </span>
-                    </div>
-                    <ul class="footer__links">
-                        <li>
-                            <a href="#" class="footer__link">
-                                Services
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">
-                                Protfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="footer__link">
-                                Skills
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="footer__socials">
-                        <a href="#" target="__blank" class="footer__social">
-                            <i class="uil uil-linkedin-alt "></i>
-                        </a>
-                        <a href="#" target="__blank" class="footer__social">
-                            <i class="uil uil-github-alt"></i>
-                        </a>
-                    </div>
-
-                    <p class="footer__copy">
-                        &#169 All right reserved
-                    </p>
                 </div>
             </div>
-        </footer>
-        
-        <!--==================== SCROLL TOP ====================-->
-        <a href="#" class="scrollup" id="scroll-up">
-            <i class="uil uil-arrow-up scrollup__icon"></i>
-        </a>
 
-        <!--==================== SWIPER JS ====================-->
-        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+            <!-- Right Scrolling Column (The Content) -->
+            <div class="space-y-32">
 
-        <!--==================== MAIN JS ====================-->
-        <script src="assets/js/main.js"></script>
-    </body>
+                <!-- About Me Content -->
+                <section id="about" class="scroll-reveal min-h-[50vh] flex flex-col justify-center">
+                    <div class="space-y-8">
+                        <h2 class="text-5xl font-bold heading-font leading-tight">
+                            Building Scalable <br />
+                            <span class="gradient-text">Solutions.</span>
+                        </h2>
+                        <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
+                            <p>
+                                As Software Engineer with <b>9 years of experience</b> specializing in backend
+                                development, AI-powered automation, and full-stack applications. Skilled in <b>Node.js,
+                                    Laravel, Express.js, Vue.js, database engineering, API design, and cloud
+                                    deployment.</b>
+                            </p>
+                            <p>
+                                Proven track record of managing client servers, optimizing database security, and
+                                delivering scalable backend solutions. Experienced in integrating <b>AI-driven
+                                    chatbots</b>, workflow automation, and data-processing pipelines to enhance
+                                efficiency and customer experience. Adept at leading technical initiatives, optimizing
+                                infrastructure, and delivering scalable, secure solutions.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-4 pt-6">
+                            <button
+                                class="bg-white text-slate-900 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-xl shadow-white/5">
+                                <i data-lucide="download" class="w-5 h-5"></i> Download CV
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="scroll-reveal">
+                    <div class="mb-12">
+                        <h2 class="text-4xl font-bold mb-4 heading-font">Technical Expertise</h2>
+                        <div class="w-20 h-1 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <div class="grid gap-6">
+                        <div class="glass-card p-8 rounded-3xl">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="code-2" class="text-blue-400 w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-xl font-bold heading-font">Languages & Frameworks</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Node
+                                    JS </span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Express
+                                    JS </span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Socket.io
+                                </span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Laravel
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Vue
+                                    JS </span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">JavaScript
+                                    (ES6) </span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">jQuery
+                                </span>
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">HTML,
+                                    CSS, Bootstrap</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 rounded-3xl">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="bot" class="text-green-400 w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-xl font-bold heading-font">AI & Automation</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">AI
+                                    Chatbot Development</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Prompt
+                                    Engineering</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Automated
+                                    Workflows</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">API-driven
+                                    AI Integration</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">N8N</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 rounded-3xl">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="database" class="text-purple-400 w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-xl font-bold heading-font">Database Expertise</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">MySQL</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">MongoDB</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Postgre
+                                    SQL</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Google
+                                    cloud Data store</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">Fire-base
+                                    Console</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 rounded-3xl">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="cloud" class="text-red-400 w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-xl font-bold heading-font">Cloud & Tools</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">DigitalOcean</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">AWS</span>
+                                <span
+                                    class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">GIT</span>
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">JIRA
+                                    API</span>
+                                <span class="px-3 py-1.5 bg-slate-800/50 rounded-lg text-sm border border-white/5">JIRA
+                                    Automation Rules</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio Slider Section -->
+                <section id="portfolio" class="scroll-reveal">
+                    <div class="mb-12">
+                        <h2 class="text-4xl font-bold heading-font mb-4">Featured Projects</h2>
+                        <p class="text-slate-400">A collection of my recent work.</p>
+                        <div class="flex gap-4 mt-6">
+                            <button id="prevBtn"
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
+                                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                            </button>
+                            <button id="nextBtn"
+                                class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-blue-500 hover:border-blue-500 transition-all">
+                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="slider-container" id="sliderContainer">
+                        <div class="slider-track" id="sliderTrack">
+                            <!-- Project 1: 24carrots -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/24C-logo.png" alt="24carrots"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">24carrots</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            24 Carrots is a full-service catering and events company serving all of
+                                            Southern California. We help create extraordinary weddings, social
+                                            gatherings, and corporate events by placing a strong emphasis on
+                                            personalized customer service.
+                                        </p>
+                                        <a href="https://24carrots.com/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 2: Labor Net App -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/Labor%20Net.webp" alt="Labor Net App"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">Labor Net App</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            For years the moving industry has been looking for a consolidated and
+                                            centralized source for casual labor and a universal background check which
+                                            can be accepted by all carriers and van lines. The LaborNet Consortium has
+                                            accomplished exactly that.
+                                        </p>
+                                        <a href="https://labornetapp.com/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 3: Byju's Elevate -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/Byjus.png" alt="Byju's Elevate"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">Byju's Elevate</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            Byju's Elevate is EMS for byju's employees where they can manage their tasks
+                                            and track all task hours and status. Management can generate reports for
+                                            employee performance and give feedback to employees.
+                                        </p>
+                                        <a href="https://byjus.com/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 4: Coldco Logistic -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/coldco-logistic.png" alt="Coldco Logistic"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">Coldco Logistic</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            Over the past 20 years, Coldco Logistics has provided logistics solutions to
+                                            more than 500 local, regional, national, and international customers across
+                                            various industries. We provide temperature-controlled warehousing and 3PL
+                                            solutions.
+                                        </p>
+                                        <a href="https://www.smartrakr.com/login" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 5: Cupid Knot -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/cupid-knot.webp" alt="Cupid Knot"
+                                            class="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">Cupid Knot</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            Cupid Knot is India’s Fastest and free matrimony app helping individuals
+                                            find their significant others. Founded in 2017 for Jain, Agarwal,
+                                            Maheshwari, and Marwari Communities, now serving all Indian communities
+                                            globally.
+                                        </p>
+                                        <a href="https://cupidknot.com/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 6: STYLE4SURE -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/style4sure_logo.png" alt="STYLE4SURE"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">STYLE4SURE</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            Style4sure is a technology company on a mission to digitize India with our
+                                            e-commerce solution. We also manufacture and trade women's ethnic wear,
+                                            providing complete inventory and dropshipping support.
+                                        </p>
+                                        <a href="https://dropship.style4sure.in/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 7: Snowboxx -->
+                            <div class="slider-slide">
+                                <div
+                                    class="glass-card slider-card rounded-3xl overflow-hidden group h-full flex flex-col">
+                                    <div class="project-logo-area relative bg-slate-800/50">
+                                        <img src="assets/img/snowboxx.png" alt="Snowboxx"
+                                            class="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-500">
+                                    </div>
+                                    <div class="p-8 flex flex-col flex-grow">
+                                        <h3 class="text-xl font-bold heading-font mb-4">Snowboxx</h3>
+                                        <p class="text-slate-400 text-sm mb-6 flex-grow line-clamp-4">
+                                            Snowboxx is an incredible music festival at Europe's best ski resort. A
+                                            unique winter festival experience combining skiing, music, and parties.
+                                        </p>
+                                        <a href="https://www.snowboxx.com/" target="_blank"
+                                            class="text-sm font-bold flex items-center gap-2 mt-auto text-blue-400 hover:text-blue-300 transition-colors">
+                                            View Project <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="scroll-reveal">
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="briefcase" class="text-blue-500 w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-4xl font-bold heading-font">Experience</h2>
+                    </div>
+                    <div class="space-y-8 relative border-l-2 border-slate-800 ml-6 pl-10">
+                        <div class="relative">
+                            <div
+                                class="absolute -left-[51px] top-1 w-5 h-5 rounded-full bg-blue-600 ring-4 ring-slate-900">
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h4 class="text-xl font-bold heading-font">Software Engineer – Lead</h4>
+                                <span class="text-blue-400 font-bold text-xs">Nov 2021 — PRESENT</span>
+                                <p class="text-slate-400 mt-2 text-sm">Crest Info Systems Pvt. Ltd. | India</p>
+                                <button onclick="openExperienceModal('lead')"
+                                    class="mt-4 text-blue-400 text-sm font-bold flex items-center gap-1 hover:text-blue-300 transition-colors group/btn">
+                                    Read More <i data-lucide="arrow-right"
+                                        class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div
+                                class="absolute -left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h4 class="text-xl font-bold heading-font">Senior Software Engineer</h4>
+                                <span class="text-slate-400 font-bold text-xs">Dec 2020 — Nov 2021</span>
+                                <p class="text-slate-400 mt-2 text-sm">Kritikal Solutions Pvt. Ltd. | India</p>
+                                <button onclick="openExperienceModal('senior-kritikal')"
+                                    class="mt-4 text-blue-400 text-sm font-bold flex items-center gap-1 hover:text-blue-300 transition-colors group/btn">
+                                    Read More <i data-lucide="arrow-right"
+                                        class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div
+                                class="absolute -left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h4 class="text-xl font-bold heading-font">Senior Software Engineer</h4>
+                                <span class="text-slate-400 font-bold text-xs">Dec 2017 — Dec 2020</span>
+                                <p class="text-slate-400 mt-2 text-sm">Sassy Infotech Pvt. Ltd. | India</p>
+                                <button onclick="openExperienceModal('senior-sassy')"
+                                    class="mt-4 text-blue-400 text-sm font-bold flex items-center gap-1 hover:text-blue-300 transition-colors group/btn">
+                                    Read More <i data-lucide="arrow-right"
+                                        class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div
+                                class="absolute -left-[51px] top-1 w-5 h-5 rounded-full bg-slate-700 ring-4 ring-slate-900">
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl">
+                                <h4 class="text-xl font-bold heading-font">Junior Software Engineer (Training)</h4>
+                                <span class="text-slate-400 font-bold text-xs">Dec 2016 — Nov 2017</span>
+                                <p class="text-slate-400 mt-2 text-sm">Wama Software | Ahmedabad</p>
+                                <button onclick="openExperienceModal('junior')"
+                                    class="mt-4 text-blue-400 text-sm font-bold flex items-center gap-1 hover:text-blue-300 transition-colors group/btn">
+                                    Read More <i data-lucide="arrow-right"
+                                        class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="scroll-reveal">
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="text-purple-500 w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-4xl font-bold heading-font">Education</h2>
+                    </div>
+                    <div class="grid gap-6">
+                        <div class="glass-card p-8 rounded-3xl border-t-4 border-t-purple-500">
+                            <h4 class="text-xl font-bold heading-font">Master of Computer Applications (MCA)</h4>
+                            <p class="text-slate-400 text-sm">Charotar University of Science & Technology | 2017</p>
+                        </div>
+                        <div class="glass-card p-8 rounded-3xl border-t-4 border-t-purple-500">
+                            <h4 class="text-xl font-bold heading-font">Bachelor of Computer Applications (BCA)</h4>
+                            <p class="text-slate-400 text-sm">Veer Narmad South Gujarat University | 2015</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="scroll-reveal pb-20">
+                    <div class="mb-12">
+                        <h2 class="text-4xl font-bold mb-4 heading-font">Get In Touch</h2>
+                        <p class="text-slate-400">Interested in working together?</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl nav-shadow">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-400">Full Name</label>
+                                <input type="text" id="name"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                    placeholder="John Doe">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-400">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                    placeholder="john@example.com">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-400">Message</label>
+                                <textarea rows="3" id="message"
+                                    class="w-full bg-slate-800/30 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+                                    placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="button" onclick="handleSubmit()"
+                                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition">
+                                Send Message
+                            </button>
+                            <div id="feedback" class="hidden text-center text-green-400 font-medium">Message sent
+                                successfully!</div>
+                        </form>
+                    </div>
+                </section>
+
+                <footer class="py-12 border-t border-white/10 text-center text-slate-500 text-sm">
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <a href="https://github.com/jigar9554" target="_blank" class="hover:text-white transition"><i
+                                data-lucide="github"></i></a>
+                        <a href="https://www.linkedin.com/in/jigar-patel1994" target="_blank"
+                            class="hover:text-white transition"><i data-lucide="linkedin"></i></a>
+                    </div>
+                    <p>&copy; <span id="currentYear"></span> Jigar Patel.</p>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <!-- Experience Modal -->
+    <div id="experienceModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="closeExperienceModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div
+                class="bg-slate-800 border border-white/10 rounded-3xl max-w-2xl w-full p-8 relative transform transition-all scale-100 shadow-2xl overflow-y-auto max-h-[80vh]">
+                <button onclick="closeExperienceModal()"
+                    class="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-400 hover:text-white"></i>
+                </button>
+
+                <div class="mb-6">
+                    <h3 id="modalTitle" class="text-2xl font-bold heading-font text-white mb-2"></h3>
+                    <div class="flex flex-wrap gap-3 text-sm">
+                        <span id="modalDate" class="text-blue-400 font-bold"></span>
+                        <span class="text-slate-600">|</span>
+                        <span id="modalCompany" class="text-slate-300"></span>
+                    </div>
+                </div>
+
+                <div class="prose prose-invert max-w-none">
+                    <ul id="modalContent" class="space-y-3 text-slate-300 list-none pl-0">
+                        <!-- Content will be injected here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
 </html>
