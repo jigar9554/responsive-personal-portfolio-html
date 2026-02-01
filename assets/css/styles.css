@@ -8,6 +8,20 @@ body {
     color: #f8fafc;
 }
 
+/* Safe area support for notched devices (iPhone X+, etc.) */
+.safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.safe-area-inset {
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+}
+
 .heading-font {
     font-family: 'Outfit', sans-serif;
 }
@@ -77,12 +91,29 @@ main .glass-card:not(.slider-card):hover {
     box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(96, 165, 250, 0.1);
 }
 
+/* Nav container: transparent on mobile, styled on desktop */
+@media (max-width: 767px) {
+    .nav-container {
+        box-shadow: none !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-container {
+        box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(96, 165, 250, 0.1);
+    }
+}
+
 /* Slider Styles */
 .slider-container {
     overflow: hidden;
     position: relative;
     width: 100%;
     cursor: grab;
+    -webkit-overflow-scrolling: touch;
 }
 
 .slider-container:active {
@@ -97,8 +128,15 @@ main .glass-card:not(.slider-card):hover {
 
 .slider-slide {
     flex: 0 0 100%;
-    padding: 0 15px;
+    min-width: 0;
+    padding: 0 8px;
     transition: opacity 0.5s ease;
+}
+
+@media (min-width: 640px) {
+    .slider-slide {
+        padding: 0 15px;
+    }
 }
 
 /* Media queries removed to show only one project slide at a time */
@@ -167,7 +205,8 @@ main .glass-card:not(.slider-card):hover {
 
 /* Logo Area for Portfolio */
 .project-logo-area {
-    height: 180px;
+    height: 140px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,6 +222,18 @@ main .glass-card:not(.slider-card):hover {
     background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.01) 10px, rgba(255, 255, 255, 0.01) 20px);
 }
 
+@media (min-width: 640px) {
+    .project-logo-area {
+        height: 160px;
+    }
+}
+
+@media (min-width: 768px) {
+    .project-logo-area {
+        height: 180px;
+    }
+}
+
 /* Layout modifications for Sticky Left Column */
 @media (min-width: 1024px) {
     .sticky-column {
@@ -190,4 +241,18 @@ main .glass-card:not(.slider-card):hover {
         top: 150px;
         height: fit-content;
     }
+}
+
+/* Prevent horizontal overflow on small screens */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Line clamp fallback for project descriptions */
+.line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

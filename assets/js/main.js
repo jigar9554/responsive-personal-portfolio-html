@@ -121,7 +121,7 @@ function scrollToSection(id) {
     toggleMobileMenu();
   }
 
-  const headerOffset = 150;
+  const headerOffset = window.innerWidth < 768 ? 100 : 150;
   const elementPosition = element.getBoundingClientRect().top;
   const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
   window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -131,6 +131,10 @@ function toggleMobileMenu() {
   const menu = document.getElementById('mobile-menu');
   menu.classList.toggle('hidden');
   document.body.classList.toggle('overflow-hidden');
+  // Re-initialize icons when menu becomes visible (icons in hidden elements may not render)
+  if (!menu.classList.contains('hidden') && typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 }
 
 
