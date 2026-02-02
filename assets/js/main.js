@@ -139,35 +139,49 @@ function toggleMobileMenu() {
 
 
 function handleSubmit() {
-  const btn = document.querySelector('#contactForm button');
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('submitBtnText');
+  const btnLoader = document.getElementById('submitBtnLoader');
   const feedback = document.getElementById('feedback');
 
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
   if (!name || !email || !message) {
     alert('Please fill in all fields.');
     return;
   }
 
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  // Show loader, hide text
+  btn.disabled = true;
+  btnText.classList.add('hidden');
+  btnLoader.classList.remove('hidden');
+  btnLoader.classList.add('flex');
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
   // Google Apps Script URL
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwvp0qW9Kmy5L0EHg-QLpN5BfMUKCYgCi3_zXJrogYgRKGNv-jAYhCnLGYCOw0uxJDfpw/exec';
 
-  // Prepare data for Google Script
   const formData = new FormData();
   formData.append('name', name);
   formData.append('email', email);
   formData.append('message', message);
 
-  // Send request in background 
-  // 'no-cors' is CRITICAL for Google App Scripts to work without error
   fetch(scriptURL, {
     method: 'POST',
     body: formData,
     mode: 'no-cors'
   })
     .then(response => {
+      document.getElementById('contactForm').reset();
       btn.classList.add('hidden');
       feedback.classList.remove('hidden');
       feedback.textContent = 'Message sent successfully!';
@@ -175,8 +189,10 @@ function handleSubmit() {
       feedback.classList.add('text-green-400');
     })
     .catch(error => {
-      btn.innerHTML = 'Send Message';
       btn.disabled = false;
+      btnText.classList.remove('hidden');
+      btnLoader.classList.add('hidden');
+      btnLoader.classList.remove('flex');
       feedback.classList.remove('hidden');
       feedback.textContent = 'Error! Please check console.';
       feedback.classList.remove('text-green-400');
